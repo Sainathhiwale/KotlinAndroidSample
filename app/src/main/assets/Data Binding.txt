@@ -1,5 +1,6 @@
               Data Binding
 Project Link: https://developer.android.com/codelabs/android-databinding#0
+Tutorial Link: https://blog.logrocket.com/data-binding-android-tutorial-with-examples/
 
 1. What is Data binding.
     The Data Binding Library is an Android Jetpack library that allows you to bind UI components
@@ -13,7 +14,12 @@ Project Link: https://developer.android.com/codelabs/android-databinding#0
 
 3. How to enable Data Binding and convert the layout in Android?
    To enabled the data binding in android project we need to add the buildFeature in build.gradle app level
+   note: first created the layout tag inside the activity and fragment file or else data binding object will not created in MainActivity code.
    build.gradle :
+   1.Add this in java android project
+    Add the following lines to your gradle.properties file to enable data binding logging and see if there are any additional details in the logs:
+    android.databinding.enableV2=true
+    android.databinding.printInnerBindingStats=true
    android
    {
      buildFeatures{
@@ -25,5 +31,31 @@ Project Link: https://developer.android.com/codelabs/android-databinding#0
     {
            enable = true
     }
+   2.Add this in java android project
+    If your project uses Kotlin and when using the Kotlin DSL gradle the below declaration will work for you
 
+    plugins {
+        id("com.android.application")
+        id("kotlin-kapt") // for data binding added
+
+    }
+    android {
+
+        dataBinding {
+            android.buildFeatures.dataBinding = true
+        }
+        dependencies {
+
+            // Apply the kapt plugin for data binding
+            implementation("androidx.databinding:databinding-runtime:4.1.4")
+        }
+
+    }
+
+4. How to the binding object is created in android project
+ once enabled the "android.buildFeatures.dataBinding = true" tag in build.gradle app level file
+ 1.The ActivityMainBinding class is automatically generated based on the layout file name (activity_main.xml).
+ 2.The DataBindingUtil.setContentView method is used to set the content view of the activity and create the binding object.
+ 3.After creating the binding object, you can use it to access views and bind data directly.
+   The binding object has references to all the views defined in your layout.
 

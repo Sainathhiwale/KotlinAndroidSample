@@ -25,6 +25,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun displayMessage() {
-        activityMainBinding.textView.text = "Welcome:" + activityMainBinding.editText.text
+       activityMainBinding.apply {
+           textView.text = "Welcome:" + editText.text
+       }
+       // activityMainBinding.textView.text = "Welcome:" + activityMainBinding.editText.text
     }
 }

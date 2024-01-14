@@ -59,3 +59,109 @@ Tutorial Link: https://blog.logrocket.com/data-binding-android-tutorial-with-exa
  3.After creating the binding object, you can use it to access views and bind data directly.
    The binding object has references to all the views defined in your layout.
 
+
+ Example
+ main_activity layout file:
+ <?xml version="1.0" encoding="utf-8"?>
+ <layout
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     xmlns:tools="http://schemas.android.com/tools" >
+
+ <androidx.constraintlayout.widget.ConstraintLayout
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     tools:context=".MainActivity">
+
+     <TextView
+         android:id="@+id/textView"
+         android:layout_width="match_parent"
+         android:layout_height="@dimen/dimen_48dp"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toTopOf="parent" />
+
+     <EditText
+         android:id="@+id/editText"
+         android:layout_width="match_parent"
+         android:layout_height="@dimen/dimen_48dp"
+         android:inputType="text"
+         app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.0"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/textView"
+         app:layout_constraintVertical_bias="0.054" />
+
+     <Button
+         android:id="@+id/submit_Button"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:text="@string/submit"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintHorizontal_bias="0.0"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/editText" />
+
+ </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+ </layout>
+
+ Data binding MainActivity
+ 1. create main activity data binding object automatically generated based on the layout file name
+    activity_main  - ActivityMainBinding
+ 2. The DataBindingUtil.setContentView method is used to set the content view of the activity and create the binding object.
+ 3. We can use kotlin apply scope function to reduce repetition of name text
+ package com.examen.kotlinandroidsample
+
+ import androidx.appcompat.app.AppCompatActivity
+ import android.os.Bundle
+ import android.view.View
+ import androidx.databinding.DataBindingUtil
+ import com.examen.kotlinandroidsample.databinding.ActivityMainBinding
+
+ class MainActivity : AppCompatActivity(), View.OnClickListener {
+     private lateinit var activityMainBinding: ActivityMainBinding
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+         initView()
+     }
+
+     private fun initView() {
+         activityMainBinding.submitButton.setOnClickListener(this)
+     }
+
+     override fun onClick(v: View?) {
+         if (v?.id==R.id.submit_Button){
+            displayMessage()
+         }
+     }
+
+     private fun displayMessage() {
+         activityMainBinding.textView.text = "Welcome:" + activityMainBinding.editText.text
+     }
+ }
+
+ Kotlin Scope function apply
+ apply:
+ 1.The primary use of apply is to configure properties of an object. It allows you to set multiple
+   properties on an object within a single block of code.
+   example:
+
+   val person = Person().apply {
+       name = "John"
+       age = 30
+       address = "123 Main Street"
+   }
+
+ 2.Initializing and Configuring Android Views:
+   apply is often used in Android development to initialize and configure UI elements. For instance:
+    Example:
+    activityMainBinding.apply {
+               textView.text = "Welcome:" + editText.text
+           }
+
+

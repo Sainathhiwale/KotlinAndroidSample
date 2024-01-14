@@ -8,8 +8,9 @@ class MainActivity : AppCompatActivity() {
     private var activityMainBinding:ActivityMainBinding?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(R.layout.activity_main)
+       /* activityMainBinding = ActivityMainBinding.inflate(layoutInflater)
         val view = activityMainBinding!!.root
-        setContentView(view)
+        setContentView(view)*/
     }
 }

@@ -1,0 +1,29 @@
+              Data Binding
+Project Link: https://developer.android.com/codelabs/android-databinding#0
+
+1. What is Data binding.
+    The Data Binding Library is an Android Jetpack library that allows you to bind UI components
+    in your XML layouts to data sources in your app using a declarative format rather than programmatically,
+    reducing boilerplate code.
+
+2. why data binding we use in android project?
+   - Improve the performance of the app.
+   - Eliminates findViewById() makes code concise, makes code easier to read and maintain.
+   - Recognize error during the compile time.
+
+3. How to enable Data Binding and convert the layout in Android?
+   To enabled the data binding in android project we need to add the buildFeature in build.gradle app level
+   build.gradle :
+   android
+   {
+     buildFeatures{
+       dataBinding = true
+     }
+   }
+   old style to define data binding in gradle file
+    dataBinding
+    {
+           enable = true
+    }
+
+

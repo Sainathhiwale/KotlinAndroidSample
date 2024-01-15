@@ -28,12 +28,15 @@ class ChalleageDBActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun startorStopProgressBar() {
-        if (binding.progressBar.visibility== View.GONE){
-            binding.progressBar.visibility = View.VISIBLE
-            binding.submitButton.text = "Stop"
-        }else{
-            binding.progressBar.visibility = View.GONE
-            binding.submitButton.text = "Start"
+        binding.apply {
+            if (progressBar.visibility== View.GONE){
+                progressBar.visibility = View.VISIBLE
+                submitButton.text = "Stop"
+            }else{
+                progressBar.visibility = View.GONE
+                submitButton.text = "Start"
+            }
         }
+
     }
 }

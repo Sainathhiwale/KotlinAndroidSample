@@ -1,0 +1,50 @@
+View Model
+link: https://blog.mindorks.com/android-viewmodels-under-the-hood/
+Link: https://rrtutors.com/tutorials/android-viewmodel-interview-questions-and-answers
+1. What is ViewModel?
+    The ViewModel is a part of the Android Architecture Components.The class is designed to store and
+    Manage the UI related data. To handle data upon lifecycle changes of activity/application like a screen
+    orientation changes.
+    What are the configuration changes?
+         Screen Rotations
+         Keyboard Changes
+         Language Changes
+         Enable multiwindows mode
+
+
+
+2. why we use viewmodel? what is purpose that and advantage
+
+  Advantage/Why/Purpose
+  1. Handle configuration changes : Viewmodel object are automatically retained whenever activity is recreated
+      due to configuration changes.
+
+  2. LifeCycle Awareness : ViewModel is designed to be lifecycle-aware. It means that a ViewModel will survive
+     configuration changes (like screen rotations) and will be automatically cleared when the associated UI
+     controller (Activity or Fragment) is finished or destroyed.
+
+  3. Data Sharing : Data can be easily shared between fragments in an activity using ViewModels.
+
+  4. Kotlin-Coroutines support : ViewModel includes support for Kotlin-Coroutines. they can be easily
+     integrated for any asynchronous processing.
+
+  5. Observer Pattern : ViewModel uses the observer pattern to notify UI components about changes in
+     the underlying data. This makes it easy to update the UI in response to changes in the data layer.
+
+  6. Reduced Memory Leaks : ViewModel helps in preventing memory leaks associated with UI controllers by
+     automatically clearing resources when they are no longer needed. This is especially important when
+     dealing with long-lived components like activities and fragments.
+
+3. How to create the ViewModel class in android
+      We need to created a class that should be extends from ViewModel class
+      Eg.Java
+      public class UserViewModel extends ViewModel(){
+
+      }
+      Eg. Kotlin
+      public class UserViewModel : ViewModel(){
+
+      }
+
+4.
+
